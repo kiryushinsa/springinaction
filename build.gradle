@@ -6,7 +6,7 @@ plugins {
 
 group = 'com.kiryushinsa.book'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '19'
+sourceCompatibility = '8'
 
 repositories {
 	mavenCentral()
