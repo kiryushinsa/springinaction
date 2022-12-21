@@ -15,8 +15,14 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'junit:junit:4.12'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	// https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
+	implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '2.41.0'
+	// https://mvnrepository.com/artifact/net.sourceforge.htmlunit/htmlunit
+	implementation group: 'net.sourceforge.htmlunit', name: 'htmlunit', version: '2.66.0'
+
 }
 
 tasks.named('test') {
