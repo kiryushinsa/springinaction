@@ -4,6 +4,7 @@ plugins {
 	id 'java'
 }
 
+sourceCompatibility = '17'
 group = 'com.kiryushinsa.book'
 version = '0.0.1-SNAPSHOT'
 
