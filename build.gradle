@@ -4,6 +4,13 @@ plugins {
 	id 'java'
 }
 
+configurations {
+	developmentOnly
+	runtimeClasspath {
+		extendsFrom developmentOnly
+	}
+}
+
 sourceCompatibility = '17'
 group = 'com.kiryushinsa.book'
 version = '0.0.1-SNAPSHOT'
@@ -22,6 +29,15 @@ dependencies {
 	implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '2.41.0'
 	// https://mvnrepository.com/artifact/net.sourceforge.htmlunit/htmlunit
 	implementation group: 'net.sourceforge.htmlunit', name: 'htmlunit', version: '2.66.0'
+
+	developmentOnly("org.springframework.boot:spring-boot-devtools")
+
+
+	compileOnly 'org.projectlombok:lombok:1.18.24'
+	annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+	testCompileOnly 'org.projectlombok:lombok:1.18.24'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
 
 }
 
