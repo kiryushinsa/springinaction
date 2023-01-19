@@ -1,4 +1,4 @@
-package com.kiryushinsa.book.springinaction;
+package com.kiryushinsa.book.springinaction.pojo;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;

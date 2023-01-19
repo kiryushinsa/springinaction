@@ -1,6 +1,5 @@
 package com.kiryushinsa.book.springinaction;
 
-import com.kiryushinsa.book.springinaction.controllers.HomeController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

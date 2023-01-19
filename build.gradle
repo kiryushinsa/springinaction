@@ -23,12 +23,19 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'junit:junit:4.12'
+	implementation 'org.springframework.boot:spring-boot-starter-validation:2.4.0'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	// https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
 	implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '2.41.0'
 	// https://mvnrepository.com/artifact/net.sourceforge.htmlunit/htmlunit
 	implementation group: 'net.sourceforge.htmlunit', name: 'htmlunit', version: '2.66.0'
+
+	// https://mvnrepository.com/artifact/javax.validation/validation-api
+	implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+	// https://mvnrepository.com/artifact/org.hibernate/hibernate-validator
+	implementation group: 'org.hibernate', name: 'hibernate-validator', version: '8.0.0.Final'
+
 
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 
