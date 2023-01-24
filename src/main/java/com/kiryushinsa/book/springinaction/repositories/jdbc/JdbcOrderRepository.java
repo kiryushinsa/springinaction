@@ -1,4 +1,4 @@
-package com.kiryushinsa.book.springinaction.repositories;
+package com.kiryushinsa.book.springinaction.repositories.jdbc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kiryushinsa.book.springinaction.pojo.Order;

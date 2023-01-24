@@ -1,4 +1,4 @@
-package com.kiryushinsa.book.springinaction.repositories;
+package com.kiryushinsa.book.springinaction.repositories.jdbc;
 
 import com.kiryushinsa.book.springinaction.pojo.Ingredient;
 import com.kiryushinsa.book.springinaction.pojo.Taco;

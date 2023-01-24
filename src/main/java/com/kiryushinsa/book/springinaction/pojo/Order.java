@@ -1,6 +1,13 @@
 package com.kiryushinsa.book.springinaction.pojo;
 
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.Table;
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
 
@@ -10,10 +17,15 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
+@Entity
+@Table(name = "Taco_Order")
 public class Order {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @NotNull(message = "Name is required")
@@ -29,7 +41,7 @@ public class Order {
     private String state;
 
     @NotBlank(message = "Zip code is required")
-    private String zip;
+    private String deliveryZip;
 
     @CreditCardNumber(message = "Not a valid credit card number")
     private String ccNumber;
@@ -43,9 +55,15 @@ public class Order {
 
     private Date placedAt;
 
-    private ArrayList<Taco> tacos;
+    @ManyToMany(targetEntity = Taco.class)
+    private List<Taco> tacos = new ArrayList<>();
 
     public void addDesign(Taco taco) {
         tacos.add(taco);
+    }
+
+    @PrePersist
+    void placedAt() {
+        this.placedAt = new Date();
     }
 }
