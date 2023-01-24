@@ -12,6 +12,4 @@ public interface OrderRepository extends CrudRepository<Order, Long> {
     List<Order> readOrdersByDeliveryZipAndPlacedAtBetween(
             String deliveryZip, Date startDate, Date endDate);
 
-    @Query("Order o where o.deliveryCity='Seattle'")
-    List<Order> readOrdersDeliveredInSeattle();
 }
