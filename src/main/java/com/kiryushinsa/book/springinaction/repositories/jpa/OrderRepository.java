@@ -1,7 +1,6 @@
 package com.kiryushinsa.book.springinaction.repositories.jpa;
 
 import com.kiryushinsa.book.springinaction.pojo.Order;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Date;

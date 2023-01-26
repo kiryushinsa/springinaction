@@ -2,7 +2,7 @@ package com.kiryushinsa.book.springinaction.controllers;
 
 import com.kiryushinsa.book.springinaction.pojo.Order;
 
-import com.kiryushinsa.book.springinaction.repositories.jdbc.OrderRepository;
+import com.kiryushinsa.book.springinaction.repositories.jpa.OrderRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

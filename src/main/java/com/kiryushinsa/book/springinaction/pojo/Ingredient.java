@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Entity
-@NoArgsConstructor(access= AccessLevel.PRIVATE, force=true)
+@NoArgsConstructor(force = true)
 @Data
 public class Ingredient {
 
