@@ -2,7 +2,6 @@ package com.kiryushinsa.book.springinaction.configs;
 
 import com.kiryushinsa.book.springinaction.pojo.User;
 import com.kiryushinsa.book.springinaction.repositories.jpa.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -39,15 +38,13 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
-                .authorizeHttpRequests()
-                .requestMatchers("./design", "/orders").hasRole("USER")
-                .requestMatchers("/", "/**").permitAll()
+                .authorizeRequests()
+                .requestMatchers("/design", "/orders").access("hasRole('USER')")
+                .requestMatchers("/", "/**").access("permitAll()")
                 .and()
-                .formLogin()
+                    .formLogin()
                     .loginPage("/login")
-                    .defaultSuccessUrl("/design")
-                    .usernameParameter("user")
-                    .usernameParameter("pwd")
+                    .defaultSuccessUrl("/design", true)
                 .and()
                 .build();
 
