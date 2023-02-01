@@ -1,11 +1,14 @@
 package com.kiryushinsa.book.springinaction.pojo;
 
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -15,6 +18,7 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,7 +26,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "Taco_Order")
-public class Order {
+public class Order implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -55,11 +59,14 @@ public class Order {
 
     private Date placedAt;
 
-    @ManyToMany(targetEntity = Taco.class)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Taco> tacos = new ArrayList<>();
 
-    public void addDesign(Taco taco) {
-        tacos.add(taco);
+    @ManyToOne
+    private User user;
+
+    public void addTaco(Taco taco) {
+        this.tacos.add(taco);
     }
 
     @PrePersist

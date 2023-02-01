@@ -80,7 +80,7 @@ public class DesignTacoController {
         }
 
         Taco saved = tacoRepository.save(design);
-        order.addDesign(saved);
+        order.addTaco(saved);
 
         log.info("Processing design:"  + design);
 

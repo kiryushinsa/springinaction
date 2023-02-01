@@ -6,18 +6,20 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.Table;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Data
 @Entity
+@Table(name = "Taco")
 public class Taco {
 
-    @NotNull
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
@@ -28,9 +30,8 @@ public class Taco {
 
     @Size(min = 1, message = "You must choose at least 1 ingredient")
     @ManyToMany(targetEntity=Ingredient.class)
-    private List<Ingredient> ingredients;
+    private List<Ingredient> ingredients = new ArrayList<>();
 
-    @NotNull
     private Date createdAt;
 
     @PrePersist
