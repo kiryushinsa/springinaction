@@ -4,7 +4,10 @@ import com.kiryushinsa.book.springinaction.pojo.Order;
 
 import com.kiryushinsa.book.springinaction.pojo.User;
 import com.kiryushinsa.book.springinaction.repositories.jpa.OrderRepository;
+import com.kiryushinsa.book.springinaction.web.OrderProps;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,10 +26,14 @@ import javax.validation.Valid;
 @SessionAttributes("order")
 public class OrderController {
 
-    private OrderRepository orderRepository;
+    private int pageSize = 20;
 
-    public OrderController(OrderRepository orderRepository) {
+    private OrderRepository orderRepository;
+    private OrderProps orderProps;
+
+    public OrderController(OrderRepository orderRepository, OrderProps orderProps) {
         this.orderRepository = orderRepository;
+        this.orderProps = orderProps;
     }
 
     @GetMapping("/current")
@@ -48,5 +55,14 @@ public class OrderController {
 
         log.info("Order submitted: " + order);
         return "redirect:/";
+    }
+
+    @GetMapping
+    public String ordersForUser (@AuthenticationPrincipal User user, Model model) {
+
+        PageRequest pageable = PageRequest.of(0, orderProps.getPageSize());
+        model.addAttribute("orders", orderRepository.findByUserOrderByPlacedAtDesc(user, pageable));
+
+        return "orderList";
     }
 }
